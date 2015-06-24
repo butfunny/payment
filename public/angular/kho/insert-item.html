@@ -1,0 +1,28 @@
+
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="close()"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Nhập nguyên liệu mới</h4>
+    </div>
+    <form>
+        <div class="modal-body">
+
+            <input type="text" class="form-control" ng-model="storeItem.itemName" placeholder="Tên nguyên liệu "  style="width:80%; margin:auto; height:40px" required>
+            <br>
+            <input type="number" class="form-control" ng-model="storeItem.instockSKU" placeholder="Tồn kho SKU"  style="width:80%; margin:auto; height:40px" required>
+            <br>
+            <input type="text" class="form-control" ng-model="storeItem.sku" placeholder="Sku"  style="width:80%; margin:auto; height:40px" required>
+            <br>
+            <input type="number" class="form-control" ng-model="storeItem.priceSKU" placeholder="Giá nhập kg"  style="width:80%; margin:auto; height:40px" >
+            <br>
+            <input type="number" class="form-control" ng-model="storeItem.retailpriceSKU" placeholder="Giá bán Sku"  style="width:80%; margin:auto; height:40px" >
+
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" ng-click="close()">Close</button>
+            <button type="button" class="btn btn-primary" ng-click="insert(storeItem)">Insert</button>
+        </div>
+    </form>
+
+</div>

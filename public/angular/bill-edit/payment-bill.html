@@ -1,0 +1,87 @@
+<style>
+    .full button span {
+        background-color: limegreen;
+        border-radius: 32px;
+        color: black;
+    }
+    .partially button span {
+        background-color: orange;
+        border-radius: 32px;
+        color: black;
+    }
+</style>
+<div id="inHoaDon">
+    <div class="panel panel-default">
+        <div class="panel-body">
+
+            <h3>Hóa Đơn</h3>
+            <table class="table" >
+                <colgroup>
+                    <col width="100">
+                    <col width="20">
+                    <col width="50">
+                    <col width="100">
+                </colgroup>
+                <thead>
+                <tr>
+                    <th>Tên</th>
+                    <th class="text-right">Số Lượng</th>
+                    <th class="text-right">Đơn Giá</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-show="bill.items.length == 0">
+                    <td colspan="3">Chưa Có Hàng Hóa Nào Được Chọn</td>
+                </tr>
+                <tr ng-repeat="billItem in bill.items" class="has-button hover-row" bill-item-row>
+                    <td ng-bind="billItem.itemName"></td>
+
+                    <td class="text-right" >
+                        <input type="text" class="form-control text-right on-over" decimal-format ng-model="billItem.count" payment-max="getStoreItem(billItem).instockSku" payment-min>
+                        <div class="on-out" ng-bind="billItem.count"></div>
+                    </td>
+
+                    <td ng-bind="(billItem.price | number) + ' VNĐ'" class="text-right"></td>
+                    <td >
+                        <div class="on-over">
+                            <button type="button" class="btn btn-default btn-sm"
+                                    ng-click ="plus()"
+                                    >
+                                <span>+</span>
+                            </button>
+                            <button type="button" class="btn btn-default btn-sm"
+                                    ng-click ="subtract()">
+                                <span>-</span>
+                            </button>
+                            <button type="button" class="btn btn-danger btn-sm"
+                                    ng-click="delete()">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+
+
+            </table>
+            <div class="text-right">
+                <div>
+                    <div>Tổng Tiền: {{price() | number:0}} VND </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <form name="infoCustomer">
+
+        <customer-info></customer-info>
+
+        <div class="text-right">
+            <label class="control-label" style="color:green" >{{noti}}</label>
+            <button type="button" class="btn btn-default"  ng-class="infoCustomer.$valid ? '':'disabled'" ng-click="saveDraftBill(bill)" >Lưu Tạm</button>
+            <button type="button" class="btn btn-primary" ng-class="infoCustomer.$valid ? '':'disabled'" ng-click="createBill(bill)">Bán Hàng</button>
+        </div>
+    </form>
+</div>
+
+

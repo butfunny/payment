@@ -1,0 +1,24 @@
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+<div class="row">
+
+
+    <div class="col-md-3">
+        <div class="form-group has-error" >
+            <label class="control-label">{{warning}}</label>
+        </div>
+        <input type="search" class="form-control" ng-model="keyword" placeholder="Tìm kiếm">
+        <div class="list-group">
+            <a href="" class="list-group-item" ng-class="outOfStock(storeItem) ? 'list-group-item-danger' : ''" ng-repeat="storeItem in storeItems | filterVi:keyword:'itemName':15" ng-click="buy(storeItem)">{{storeItem.itemName}} <span class="badge">{{storeItem.instockSku}}</span></a>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <payment-bill bill="bill" store-items="storeItems" after-create="loadStoreItems()"></payment-bill>
+    </div>
+
+</div>
+
+
+<div>
+
+</div>

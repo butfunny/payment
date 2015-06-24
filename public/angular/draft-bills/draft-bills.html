@@ -1,0 +1,53 @@
+<div>
+    <div class="col-md-10">
+        <table class="table table-hover">
+            <colgroup>
+                <col width="300">
+                <col width="700">
+                <col width="500">
+                <col width="100">
+
+            </colgroup>
+            <thead>
+            <tr>
+                <th>Thời gian</th>
+                <th>Mặt Hàng -- Số Lượng</th>
+                <th>Khách hàng</th>
+                <th></th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-show="billDrafts.length == 0">
+                <td colspan="4">Không có hóa đơn lưu tạm</td>
+            </tr>
+            <tr class="hover-row" ng-repeat="billDraft in billDrafts" ng-click="viewBillDraft(billDraft)">
+                <td ng-bind="billDraft.createTime | date:'dd/MM/yyyy HH:mm'"></td>
+                <td >
+                    <div ng-repeat="billDraftItem in billDraft.items">
+                       {{billDraftItem.storeItem.itemName}} --
+                        <strong style="color:  red">{{billDraftItem.count}}</strong> x {{billDraftItem.storeItem.sku}}
+                    </div>
+                </td>
+                <td ng-bind="billDraft.customer.customerName">
+                </td>
+
+                <td>
+                    <div class="on-over">
+                        <button type="button" class="btn btn-danger btn-sm"
+                                ng-click="delete(billDraft, $event)">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+        <button type="button" class="btn btn-danger pull-right"
+                ng-click="exportToExcel()">
+            <span class="glyphicon glyphicon-save"> Xuất Excel</span>
+        </button>
+    </div>
+
+</div>

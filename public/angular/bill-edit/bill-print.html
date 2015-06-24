@@ -1,0 +1,70 @@
+<div class="container">
+    <header>
+        <h2 class="text-center">
+            <img src="img/icon.png" style="width: 70px; width: 70px;" class="pull-left">
+            Thông Tin Hóa Đơn
+        </h2>
+    </header>
+
+    <br/>
+    <br/>
+
+    <table style="border: 1px" class="table">
+        <tr>
+            <th>Tên Mặt Hàng</th>
+            <th class="text-right">Số Lượng</th>
+            <th class="text-right">Đơn Giá</th>
+        </tr>
+        <tr ng-repeat="item in bill.items">
+            <td>{{item.itemName}}</td>
+            <td class="text-right">{{item.count}}</td>
+            <td class="text-right">{{item.price | number:0}}</td>
+        </tr>
+    </table>
+    <br/>
+    <div class="text-right">
+        Tổng Tiền : <b>{{price() | number:0}} VNĐ</b>
+        </div>
+    <div>
+        <div class="col-md-5">
+            <table>
+                <colgroup>
+                    <col width="300">
+                    <col width="500">
+                </colgroup>
+                <tbody>
+                    <tr>
+                        <td >Họ Và Tên</td>
+                        <td><b>{{bill.customer.customerName}}</b></td>
+                    </tr>
+                    <tr>
+                        <td >Số điện thoại khách hàng:</td>
+                        <td><b>{{bill.customer.customerPhone}}</b></td>
+                    </tr>
+                    <tr>
+                        <td>Địa chỉ:</td>
+                        <td><b>{{bill.customer.customerPlace}}</b></td>
+                    </tr>
+                    <tr>
+                        <td >Tên người nhận hàng:</td>
+                        <td><b>{{bill.customer.receiverName}}</b></td>
+                    </tr>
+                    <tr>
+                        <td >Số điện thoại người nhận:</td>
+                        <td><b>{{bill.customer.receiverPhone}}</b></td>
+                    </tr>
+                    <tr>
+                        <td >Địa chỉ nhận hàng:</td>
+                        <td><b>{{bill.customer.receiverPlace}}</b></td>
+                    </tr>
+                    <tr>
+                        <td >Ngày giờ nhận hàng :</td>
+                        <td><b>{{bill.deliverTime | date:'HH:mm dd/MM/yyyy'}}</b></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>

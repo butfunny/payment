@@ -1,0 +1,82 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3>Thông tin khách hàng</h3>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label class="control-label">Họ và Tên khách hàng </label>
+
+                    <input class="form-control" ng-model="view.customerChoosing" typeahead="customer as customer.customerName for customer in customers | filter:$viewValue | limitTo:5" required>
+                </div>
+            </div>
+
+
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label class="control-label">Tên người nhận hàng</label>
+                    <input class="form-control" ng-model="bill.customer.receiverName" >
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label class="control-label">Địa chỉ</label>
+                    <input class="form-control" ng-model="bill.customer.customerPlace" >
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label class="control-label">Địa chỉ nhận hàng</label>
+                    <input class="form-control" ng-model="bill.customer.receiverPlace" >
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label class="control-label">Số điện thoại khách hàng</label>
+                    <input class="form-control" ng-model="bill.customer.customerPhone" >
+                </div>
+            </div>
+
+
+
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label class="control-label">Ngày nhận hàng</label>
+
+                    <date-picker model="bill.deliverTime"></date-picker>
+
+                </div>
+            </div>
+
+
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label class="control-label">Email</label>
+                    <input class="form-control" ng-model="bill.customer.email" >
+                </div>
+            </div>
+
+
+            <div class="col-lg-6">
+                <label class="control-label">Giờ nhận hàng</label>
+                <timepicker ng-model="bill.deliverTime" hour-step="1" minute-step="10"></timepicker>
+            </div>
+
+            <div class="col-lg-6">
+
+            </div>
+
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label class="control-label">Số điện thoại người nhận</label>
+                    <input class="form-control" ng-model="bill.customer.receiverPhone" >
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

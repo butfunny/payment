@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="form-group">
+            <select class="form-control" ng-model="date" ng-options="date as (date | date:'yyyy/MM/dd') for date in days" style="width:400px; margin-left:10px"></select>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+
+        <report-bill-table></report-bill-table>
+
+        <button type="button" class="btn btn-danger pull-right"
+                ng-click="exportToExcel()">
+            <span class="glyphicon glyphicon-save"> Xuất Excel</span>
+        </button>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,76 @@
+<div style="margin-bottom: 30px;width: 40%;">
+    <input class="form-control" ng-model="keyword" placeholder="Tìm kiếm">
+</div>
+<table class="table table-hover">
+    <colgroup>
+        <col width="400">
+        <col width="200">
+        <col width="140">
+        <col width="300">
+        <col width="300">
+        <col width="100">
+    </colgroup>
+    <thead>
+    <tr>
+        <th>Tên Nguyên Liệu</th>
+        <th>Tồn Kho SKU</th>
+        <th>SKU</th>
+        <th class="text-right">Giá Nhập/SKU</th>
+        <th class="text-right">Giá Bán/SKU</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-if="filteredList.length == 0">
+        <td colspan="6" ng-if="keyword.length > 0">Không tìm thấy mặt hàng "{{keyword}}"</td>
+        <td colspan="6" ng-if="keyword.length == 0">Kho hàng rỗng</td>
+    </tr>
+    <tr ng-repeat="storeItem in filteredList = (storeItems | filter:keyword | slice:(currentPage-1)*10:10)" class="hover-row" store-item-row>
+        <td >
+            <div class="on-out" ng-bind="storeItem.itemName"></div>
+            <div class="on-over">
+                <input class="form-control" ng-model="storeItem.itemName">
+            </div>
+
+        </td>
+        <td >
+            <div class="on-out text-right" ng-bind="storeItem.instockSKU | number"></div>
+            <div class="on-over ">
+                <input type="text" class="form-control text-right" decimal-format ng-model="storeItem.instockSKU">
+            </div>
+        </td>
+
+        <td>
+            <div class="on-out" ng-bind="storeItem.sku"></div>
+            <div class="on-over">
+                <input type="text" class="form-control" ng-model="storeItem.sku">
+            </div>
+        </td>
+
+        <td>
+            <div class="on-out text-right" ng-bind="storeItem.priceSKU | number"></div>
+            <div class="on-over">
+                <input type="text" class="form-control text-right" decimal-format ng-model="storeItem.priceSKU">
+            </div>
+        </td>
+
+        <td>
+            <div class="on-out text-right" ng-bind="storeItem.retailpriceSKU | number"></div>
+            <div class="on-over">
+                <input type="text" class="form-control text-right" decimal-format ng-model="storeItem.retailpriceSKU">
+            </div>
+        </td>
+        <td >
+             <div  class="on-over">
+                <button type="button" class="btn btn-danger btn-sm"
+                        ng-click="delete(storeItem)">
+                    <span class="glyphicon glyphicon-trash"></span>
+                </button>
+             </div>
+        </td>
+
+
+    </tr>
+    </tbody>
+</table>
+<pagination total-items="storeItems.length" ng-model="currentPage"></pagination>
